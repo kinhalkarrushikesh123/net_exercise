@@ -1,4 +1,4 @@
-module example.com/backup
+module example.com/net_exercise
 
 go 1.22
 

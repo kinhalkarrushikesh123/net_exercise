@@ -1,13 +1,18 @@
-FROM golang:1.22
+FROM golang:1.22-alpine
 
-# working directory inside the container
+# Set environment variables
+ENV GO111MODULE=on
+
+# Set the working directory inside the container
 WORKDIR /app
 
 # Copy the Go application source code into the container
 COPY . .
 
-# Build the Go application
-RUN go build -o backup
+# Install git (required for fetching dependencies)
+RUN apk update && \
+    apk add --no-cache git && \
+    go build -o backup
 
 # Expose the port the application runs on
 EXPOSE 8080
