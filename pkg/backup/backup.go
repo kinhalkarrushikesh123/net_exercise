@@ -122,6 +122,8 @@ func BackupConfigMaps(clientset *kubernetes.Clientset, namespace, backupDir stri
 		return err
 	}
 	for _, cm := range cmList.Items {
+
+		// https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#introducing-rootcaconfigmap
 		if cm.Name == "kube-root-ca.crt" {
 			continue
 		}

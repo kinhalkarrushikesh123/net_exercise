@@ -51,7 +51,7 @@ func main() {
 	}
 	router := gin.Default()
 
-	router.PUT("/application/", defineApplication)
+	router.PUT("/application", defineApplication)
 	router.PUT("/backup", performBackup)
 	router.PUT("/restore", restoreBackup)
 
@@ -106,8 +106,6 @@ func performBackup(c *gin.Context) {
 	// Generate a unique backup ID
 	backupCounter++
 	backupID := fmt.Sprintf("backup_%d", backupCounter)
-
-	// Perform backup operations for relevant resources (PVC, Pod, ReplicaSet, Deployment, ConfigMap, etc.)
 
 	// Create a directory to store the backup files
 	backupDir := fmt.Sprintf("./backups/%s", backupID)

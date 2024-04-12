@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -62,7 +63,7 @@ func restorePVC(file, namespace, backupDir string, clientset *kubernetes.Clients
 
 	for _, pvcFile := range pvcFiles {
 		// Read the PVC JSON from the file
-		pvcJSON, err := ioutil.ReadFile(pvcFile)
+		pvcJSON, err := os.ReadFile(pvcFile)
 		if err != nil {
 			return err
 		}
@@ -120,7 +121,7 @@ func restorePod(file, namespace, backupDir string, clientset *kubernetes.Clients
 
 	for _, podFile := range podFiles {
 		// Read the Pod JSON from the file
-		podJSON, err := ioutil.ReadFile(podFile)
+		podJSON, err := os.ReadFile(podFile)
 		if err != nil {
 			return err
 		}
@@ -177,7 +178,7 @@ func restoreReplicaSet(file, namespace, backupDir string, clientset *kubernetes.
 
 	for _, rsFile := range rsFiles {
 		// Read the ReplicaSet JSON from the file
-		rsJSON, err := ioutil.ReadFile(rsFile)
+		rsJSON, err := os.ReadFile(rsFile)
 		if err != nil {
 			return err
 		}
@@ -235,7 +236,7 @@ func restoreDeployment(file, namespace, backupDir string, clientset *kubernetes.
 
 	for _, deploymentFile := range deploymentFiles {
 		// Read the Deployment JSON from the file
-		deploymentJSON, err := ioutil.ReadFile(deploymentFile)
+		deploymentJSON, err := os.ReadFile(deploymentFile)
 		if err != nil {
 			return err
 		}
@@ -293,7 +294,7 @@ func restoreConfigMap(file, namespace, backupDir string, clientset *kubernetes.C
 
 	for _, cmFile := range cmFiles {
 		// Read the ConfigMap JSON from the file
-		cmJSON, err := ioutil.ReadFile(cmFile)
+		cmJSON, err := os.ReadFile(cmFile)
 		if err != nil {
 			return err
 		}
@@ -345,7 +346,7 @@ func restoreStatefulSet(file, namespace, backupDir string, clientset *kubernetes
 
 	for _, statefulSetFile := range statefulSetFiles {
 		// Read the StatefulSet JSON from the file
-		statefulSetJSON, err := ioutil.ReadFile(statefulSetFile)
+		statefulSetJSON, err := os.ReadFile(statefulSetFile)
 		if err != nil {
 			return err
 		}
@@ -395,7 +396,7 @@ func restoreServices(file, namespace, backupDir string, clientset *kubernetes.Cl
 	}
 	for _, file := range files {
 		if !file.IsDir() && strings.HasPrefix(file.Name(), "service-") {
-			serviceJSON, err := ioutil.ReadFile(filepath.Join(backupDir, file.Name()))
+			serviceJSON, err := os.ReadFile(filepath.Join(backupDir, file.Name()))
 			if err != nil {
 				return err
 			}
@@ -449,7 +450,7 @@ func restoreServiceAccounts(file, namespace, backupDir string, clientset *kubern
 	// Restore each ServiceAccount from backup files
 	for _, file := range files {
 		// Read backup file
-		data, err := ioutil.ReadFile(filepath.Join(backupDir, file.Name()))
+		data, err := os.ReadFile(filepath.Join(backupDir, file.Name()))
 		if err != nil {
 			return err
 		}
@@ -493,7 +494,7 @@ func restoreSecrets(file, namespace, backupDir string, clientset *kubernetes.Cli
 
 	for _, file := range files {
 		if !file.IsDir() && strings.HasPrefix(file.Name(), "secret-") {
-			secretJSON, err := ioutil.ReadFile(filepath.Join(backupDir, file.Name()))
+			secretJSON, err := os.ReadFile(filepath.Join(backupDir, file.Name()))
 			if err != nil {
 				return err
 			}

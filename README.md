@@ -109,7 +109,7 @@ go build -o backup
 ## Running using Docker
 ```bash
 docker build -t backup:latest .
-docker run -p -v (Path to KubeConfig):/root/.kube/config 8080:8080 backup:latest
+docker run -p 8080:8080 -v (Path to KubeConfig):/root/.kube/config backup:latest
 
 ```
 Note:
