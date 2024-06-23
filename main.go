@@ -5,8 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	"example.com/net_exercise/pkg/backup"
-	"example.com/net_exercise/pkg/restore"
+	"net_exercise/pkg/backup"
+	"net_exercise/pkg/restore"
+
 	"github.com/gin-gonic/gin"
 
 	"k8s.io/client-go/kubernetes"
