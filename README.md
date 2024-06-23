@@ -113,4 +113,4 @@ docker run -p 8080:8080 -v (Path to KubeConfig):/root/.kube/config backup:latest
 
 ```
 Note:
-Please ensure that the Docker container has access to your Kubernetes cluster's API server and has all the necessary permissions and privileges to interact with the API server. This includes appropriate authentication credentials, authorization for performing actions on Kubernetes resources, and network connectivity to reach the API server endpoints. Ensuring proper access and permissions is crucial for the Docker container to successfully communicate with the Kubernetes API server and perform desired operations within the cluster.
+Please ensure that the Docker container has access to your Kubernetes cluster's API server and has all the necessary permissions and access to interact with the API server. This includes appropriate authentication credentials, authorization for performing actions on Kubernetes resources, and network connectivity to reach the API server endpoints. Ensuring proper access and permissions is crucial for the Docker container to successfully communicate with the Kubernetes API server and perform desired operations within the cluster.
